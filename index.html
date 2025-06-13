@@ -5,35 +5,31 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Canalización Arterial Ecoguiada</title>
   <style>
-    /* Reset y estilos base */
     * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
     body { background-color: #f5f7fa; color: #333; line-height: 1.6; }
-    header { background-color: #002244; color: white; padding: 1.5rem; text-align: center; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+    header { background: #002244; color: #fff; padding: 1.5rem; text-align: center; }
     h1 { font-size: 1.8rem; margin-bottom: 0.5rem; }
     main { max-width: 1200px; margin: 2rem auto; padding: 0 1rem; }
-    .introduccion { background: #fff; padding: 2rem; margin-bottom: 2rem; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
+    .introduccion { background: #fff; padding: 2rem; border-radius: 8px; margin-bottom: 2rem; }
     .introduccion h2 { color: #002244; margin-bottom: 1rem; }
     .introduccion p { margin-bottom: 1rem; }
     .quick-nav { display: flex; justify-content: center; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1.5rem; }
-    .quick-nav button { background: #e0e0e0; border: none; padding: 0.5rem 1rem; border-radius: 20px; cursor: pointer; transition: background 0.3s, color 0.3s; }
-    .quick-nav button:hover { background: #001122; color: white; }
-    .slider-container { position: relative; overflow: hidden; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); background: #fff; }
+    .quick-nav button { background: #e0e0e0; border: none; padding: 0.5rem 1rem; border-radius: 20px; cursor: pointer; }
+    .quick-nav button:hover { background: #001122; color: #fff; }
+    .slider-container { position: relative; overflow: hidden; border-radius: 8px; }
     .slides { display: flex; transition: transform 0.6s ease; }
-    .slide { min-width: 100%; padding: 2rem; opacity: 0; animation: fadeIn 0.6s forwards; }
+    .slide { min-width: 100%; padding: 2rem; opacity: 0; transition: opacity 0.6s ease; }
+    .slide.active { opacity: 1; }
     .slide-content { max-width: 700px; margin: 0 auto; text-align: left; }
     .slide h2 { color: #002244; margin-bottom: 1rem; font-size: 1.5rem; text-align: center; }
-    .slide-content p, .slide-content ol { margin: 0 0 1rem; text-align: justify; }
-    .slide-content img, .slide-content iframe { width: 100%; height: auto; margin: 1rem 0; border-radius: 6px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
+    .slide-content p, .slide-content ol { margin-bottom: 1rem; text-align: justify; }
+    .slide-content img, .slide-content iframe { width: 100%; height: auto; margin: 1rem 0; border-radius: 6px; }
     .slider-nav { position: absolute; top: 50%; width: 100%; display: flex; justify-content: space-between; transform: translateY(-50%); }
-    .prev, .next { background: rgba(0,34,68,0.8); color: white; border: none; padding: 1rem; border-radius: 50%; cursor: pointer; width: 50px; height: 50px; display: flex; align-items: center; justify-content: center; transition: background 0.3s, transform 0.3s; }
-    .prev:hover, .next:hover { background: #001122; transform: scale(1.2); }
-    .pagination { display: flex; justify-content: center; padding: 1rem 0; }
-    .dot { width: 12px; height: 12px; margin: 0 5px; background: #ccc; border-radius: 50%; cursor: pointer; transition: background 0.3s; }
+    .prev, .next { background: rgba(0,34,68,0.8); color: #fff; border: none; width: 40px; height: 40px; border-radius: 50%; cursor: pointer; }
+    .pagination { display: flex; justify-content: center; margin-top: 1rem; }
+    .dot { width: 12px; height: 12px; margin: 0 5px; background: #ccc; border-radius: 50%; cursor: pointer; }
     .dot.active { background: #001122; }
-    footer { background: #002244; color: white; text-align: center; padding: 1.5rem; margin-top: 2rem; }
-    @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
-    @media (max-width: 768px) { .prev, .next { width: 40px; height: 40px; } .slide h2 { font-size: 1.3rem; } }
-    @media (max-width: 480px) { header { padding: 1rem; } h1 { font-size: 1.5rem; } .slide { padding: 1rem; } .slide h2 { font-size: 1.2rem; } .slide-content p { font-size: 0.9rem; } }
+    footer { background: #002244; color: #fff; text-align: center; padding: 1rem; font-family: 'Georgia', serif; font-style: italic; }
   </style>
 </head>
 <body>
@@ -45,84 +41,88 @@
     <section class="introduccion">
       <h2>Introducción</h2>
       <p>La cateterización de una línea arterial para la monitorización invasiva de la presión arterial es una técnica común, tanto en Unidades de Cuidados Críticos como en el período intra y postoperatorio de pacientes sometidos a cirugía cardíaca u otro tipo de cirugía mayor que requiera un control estricto de la presión arterial o extraer muestras repetidas de sangre.</p>
-      <p>La canulación de la arteria radial es considerada el método de referencia en la mayoría de los pacientes pediátricos y, aunque el uso de los ultrasonidos ha experimentado un gran ascenso en los últimos diez años, todavía son muchos los profesionales que siguen utilizando la técnica de la palpación.</p>
+      <p>La canulación de la arteria radial es considerada el método de referencia en la mayoría de los pacientes, y aunque el uso de los ultrasonidos ha experimentado un gran ascenso en los últimos diez años, todavía son muchos los profesionales que siguen utilizando la técnica de la palpación.</p>
       <p>Algunos estudios recientes muestran que el uso de la ecografía podría mejorar la tasa de éxito y reducir la incidencia de complicaciones como hematomas.</p>
     </section>
     <div class="quick-nav">
-      <button onclick="goToSlide(0)">Paso 1</button>
-      <button onclick="goToSlide(1)">Paso 2</button>
-      <button onclick="goToSlide(2)">Paso 3</button>
-      <button onclick="goToSlide(3)">Paso 4</button>
-      <button onclick="goToSlide(4)">Paso 5</button>
-      <button onclick="goToSlide(5)">Paso 6</button>
+      <button onclick="goToSlide(0)">Paso 1</button>
+      <button onclick="goToSlide(1)">Paso 2</button>
+      <button onclick="goToSlide(2)">Paso 3</button>
+      <button onclick="goToSlide(3)">Paso 4</button>
+      <button onclick="goToSlide(4)">Paso 5</button>
+      <button onclick="goToSlide(5)">Paso 6</button>
     </div>
     <div class="slider-container">
       <div class="slides">
-        <!-- Paso 1 -->
-        <div class="slide">
+        <!-- Paso 1 -->
+        <div class="slide" data-index="0">
           <div class="slide-content">
-            <h2>Paso 1: Colocación del transductor</h2>
-            <p>El transductor será el responsable de convertir la señal mecánica de nuestro catéter en señal digital eléctrica que nos aportará un registro en el monitor. Deberá colocarse insertado en el sistema en posición vertical tal y como aparece en la imagen.</p>
-            <img src="https://campusvygon.com/es/wp-content/uploads/sites/7/2021/02/poner-a-cero_Mesa-de-trabajo-1.jpg" alt="Paso 1">
+            <h2>Paso 1: Colocación del transductor</h2>
+            <p>El transductor será el responsable de convertir la señal mecánica de nuestro catéter en señal digital eléctrica que nos aportará un registro en el monitor.</p>
+            <p>Deberá colocarse insertado en el sistema en posición vertical tal y como aparece en la imagen.</p>
+            <p>Asignar “poner a cero” en el monitor.</p>
+            <img src="https://campusvygon.com/es/wp-content/uploads/sites/7/2021/02/poner-a-cero_Mesa-de-trabajo-1.jpg" alt="Paso 1">
           </div>
         </div>
-        <!-- Paso 2 -->
-        <div class="slide">
+        <!-- Paso 2 -->
+        <div class="slide" data-index="1">
           <div class="slide-content">
-            <h2>Paso 2: Posición del paciente y del operador</h2>
-            <p>Paciente en decúbito supino con el brazo en abducción parcial. El operador se sitúa según lateralidad (lado izquierdo si es diestro canalizando arteria izquierda) con el ecógrafo frente a él.</p>
-            <p>Se puede realizar una ligera flexión dorsal para facilitar el acceso, pero no se recomienda que esta sea forzada como se realiza en muchas ocasiones, ya que es posible que el catéter se doble y, al volver la mano a su posición normal, el valor de presión arterial invasiva puede no ser fiable. También se recomienda no pinchar en una zona muy distal para permitir una mayor movilidad y comodidad del paciente.</p>
-            <p>Para realizar el abordaje de la arteria radial izquierda, si el operador es diestro, se posicionará del lado izquierdo del paciente mirando hacia la cabeza del mismo. De esta manera, se utilizará la mano hábil para canular la arteria radial y la mano izquierda sostendrá la sonda ecográfica.</p>
-            <p>Si debemos canular la arteria derecha, el operador se posicionará a la cabecera del paciente para poder realizar el procedimiento con su mano hábil. En caso de que el operador sea zurdo, su colocación será la opuesta.</p>
-            <p>El ecógrafo siempre se colocará en frente al operador para optimizar la coordinación visual y manual durante el procedimiento.</p>
-            <img src="https://campusvygon.com/es/wp-content/uploads/sites/7/2021/02/BLOG-mano_Mesa-de-trabajo-1.jpg" alt="Paso 2">
+            <h2>Paso 2: Posición del paciente y del operador</h2>
+            <p>Nos centraremos en la canalización de la arteria radial, dado que es la de primera elección.</p>
+            <p>El paciente bajo anestesia general con intubación endotraqueal, sedado o máscara laríngea, se posicionará en decúbito supino con el brazo seleccionado en abducción parcial.</p>
+            <p>Se puede realizar una ligera flexión dorsal para facilitar el acceso, pero no se recomienda que sea forzada, ya que el catéter podría doblarse y, al volver la mano a su posición normal, la lectura de presión arterial invasiva podría no ser fiable. Tampoco pinchar muy distal para movilidad y comodidad del paciente.</p>
+            <p>Para la arteria radial izquierda, operador diestro se ubicará al lado izquierdo del paciente mirando a la cabeza, con mano hábil para canular y la otra para la sonda.</p>
+            <p>Para la arteria derecha, operador se colocará en la cabecera; si es zurdo, la posición es inversa.</p>
+            <p>El ecógrafo siempre se colocará frente al operador para optimizar la coordinación visual y manual.</p>
+            <img src="https://campusvygon.com/es/wp-content/uploads/sites/7/2021/02/BLOG-mano_Mesa-de-trabajo-1.jpg" alt="Paso 2">
           </div>
         </div>
-        <!-- Paso 3 -->
-        <div class="slide">
+        <!-- Paso 3 -->
+        <div class="slide" data-index="2">
           <div class="slide-content">
-            <h2>Paso 3: Elección del sitio a canular y verificación de la permeabilidad del vaso</h2>
+            <h2>Paso 3: Elección del sitio a canular y verificación de la permeabilidad del vaso</h2>
             <p>Se recomienda realizar un escaneo de la región antebraquial de ambos lados con el objetivo de elegir el sitio óptimo para la punción.</p>
-            <p>Se debe reconocer la sonoanatomía de las venas, arterias y estructuras adyacentes, identificar posibles variantes anatómicas y verificar la permeabilidad del vaso detectando la presencia de trombos intraluminares con el Doppler color y pulsado.</p>
-            <p>Del mismo modo, mediante el uso de la ecografía, realizaremos una comprobación del flujo colateral antes de comenzar a canalizar la arteria.</p>
-            <img src="https://campusvygon.com/es/wp-content/uploads/sites/7/2021/02/BLOG-fuera-de-plano_Mesa-de-trabajo-1.jpg" alt="Paso 3">
+            <p>Se debe reconocer la sonoanatomía de venas, arterias y estructuras adyacentes, identificar posibles variantes anatómicas y verificar la permeabilidad del vaso detectando trombos intraluminares con Doppler color y pulsado.</p>
+            <p>Mediante ecografía, comprobar el flujo colateral antes de canalizar la arteria.</p>
+            <img src="https://campusvygon.com/es/wp-content/uploads/sites/7/2021/02/BLOG-fuera-de-plano_Mesa-de-trabajo-1.jpg" alt="Paso 3">
           </div>
         </div>
-        <!-- Paso 4 -->
-        <div class="slide">
+        <!-- Paso 4 -->
+        <div class="slide" data-index="3">
           <div class="slide-content">
-            <h2>Paso 4: Realizar la punción ecoguiada “en plano” de la arteria radial</h2>
-            <p>Se recomienda canalizar en plano, ya que, a pesar de resultar técnicamente más difícil, siempre es más fiable que canalizar fuera de plano.</p>
-            <p>La canalización en plano permite observar mejor la entrada de la aguja dentro de la arteria, además de poder observar si surge alguna complicación como la aparición de un hematoma o una disección de la pared arterial al pasar la guía.</p>
-            <p>Los pasos para realizar la canalización ecoguiada en plano serán los siguientes:</p>
+            <h2>Paso 4: Realizar la punción ecoguiada “en plano” de la arteria radial</h2>
+            <p>Se recomienda canalizar en plano, técnica más fiable que canalizar fuera de plano pese a mayor dificultad técnica.</p>
+            <p>Permite observar mejor la entrada de la aguja y detectar complicaciones como aparición de hematoma o disección al pasar la guía.</p>
+            <p>Los pasos para canalización en plano son:</p>
             <ol>
-              <li>Posicionar el ecógrafo en frente al operador.</li>
-              <li>Purgar el catéter con solución fisiológica sobre una mesa con campo estéril.</li>
-              <li>Realizar la asepsia de la piel de la región a canular y colocar campos estériles. Cubrir la sonda lineal con funda estéril y gel en su interior para mejorar la interfase.</li>
-              <li>Escanear la región del antebrazo perpendicular al mismo a nivel de tercio externo para visión en eje corto. Deslizar la sonda siguiendo la arteria hacia el codo.</li>
-              <li>Girar la sonda ecográfica 90° y realizar la punción en plano.</li>
-              <li>Al observar el flujo pulsátil a través de la aguja, avanzar la guía metálica con suavidad.</li>
+              <li>Posicionar el ecógrafo frente al operador.</li>
+              <li>Purgar el catéter con solución fisiológica sobre mesa estéril.</li>
+              <li>Asepsia de la región y colocar campos estériles, cubrir sonda con funda estéril y gel.</li>
+              <li>Escanear el antebrazo en eje corto y deslizar sonda hacia codo.</li>
+              <li>Girar la sonda 90° y realizar la punción “en plano”.</li>
+              <li>Al observar flujo pulsátil, avanzar la guía metálica suavemente.</li>
             </ol>
-            <iframe src="https://www.youtube.com/embed/I86AVTPZHcc?si=wn_f2uWjXSJ2xhFv" title="Video" frameborder="0" allowfullscreen></iframe>
+            <iframe width="100%" height="315" src="https://www.youtube.com/embed/I86AVTPZHcc?si=wn_f2uWjXSJ2xhFv" title="Video" frameborder="0" allowfullscreen></iframe>
           </div>
         </div>
-        <!-- Paso 5 -->
-        <div class="slide">
+        <!-- Paso 5 -->
+        <div class="slide" data-index="4">
           <div class="slide-content">
-            <h2>Paso 5: Verificar la correcta posición del fiador en el interior de la arteria radial</h2>
+            <h2>Paso 5: Verificar la correcta posición del fiador en el interior de la arteria radial</h2>
             <p>Una vez canulada la arteria, deslizar la guía metálica a través de la aguja y verificar con ultrasonido la correcta ubicación en eje largo.</p>
-            <p>Si hay resistencia al paso de la guía, retirarla unos milímetros e intentar reintroducir rotándola ligeramente, o rotar la aguja para encontrar un ángulo óptimo.</p>
-            <img src="https://campusvygon.com/es/wp-content/uploads/sites/7/2021/02/BLOG-SELDINGER-1-a-3_Mesa-de-trabajo-1_Mesa-de-trabajo-1.jpg" alt="Paso 5">
+            <p>Si hay resistencia, retirar unos milímetros e intentar reintroducir rotando ligeramente la guía o la aguja para facilitar la entrada según dirección del bisel.</p>
+            <img src="https://campusvygon.com/es/wp-content/uploads/sites/7/2021/02/BLOG-SELDINGER-1-a-3_Mesa-de-trabajo-1_Mesa-de-trabajo-1.jpg" alt="Paso 5">
           </div>
         </div>
-        <!-- Paso 6 -->
-        <div class="slide">
+        <!-- Paso 6 -->
+        <div class="slide" data-index="5">
           <div class="slide-content">
-            <h2>Paso 6: Verificar la correcta posición del catéter en el interior de la arteria radial</h2>
-            <p>Una vez comprobada la posición de la guía metálica, retirar la aguja e introducir el catéter a través de la guía, retirándola posteriormente.</p>
-            <p>Comprobar su posición en eje largo con ultrasonido y observar el flujo pulsátil de sangre oxigenada.</p>
-            <p>Conectar el catéter a la línea presurizada a 300 mmHg y realizar el “cero” en el monitor.</p>
-            <img src="https://campusvygon.com/es/wp-content/uploads/sites/7/2021/02/BLOG-SELDINGER-4-a-6_Mesa-de-trabajo-1.jpg" alt="Paso 6">
+            <h2>Paso 6: Verificar la correcta posición del catéter en el interior de la arteria radial</h2>
+            <p>Una vez comprobada la colocación de la guía metálica, retirar la aguja e introducir el catéter a través de la guía, retirándola posteriormente.</p>
+            <p>Utilizar ultrasonido para comprobar posición en eje largo y observar flujo pulsátil de sangre oxigenada.</p>
+            <p>Para finalizar, conectar el catéter a la línea presurizada a 300 mmHg y realizar el “cero” en el monitor.</p>
+            <img src="https://campusvygon.com/es/wp-content/uploads/sites/7/2021/02/BLOG-SELDINGER-4-a-6_Mesa-de-trabajo-1.jpg" alt="Paso 6">
+            <p>A pesar de que el uso de ultrasonido no está generalizado, estudios y práctica clínica muestran su utilidad, aumentando éxito en el primer intento y reduciendo complicaciones.</p>
           </div>
         </div>
       </div>
@@ -141,23 +141,21 @@
     </div>
   </main>
   <footer>
-    <p>© 2025 ASENF OVALLE YOHNNIER GOMEZ</p>
+    <p>© 2025 ASENF Ovalle y Yohnnier Gomez. Todos los derechos reservados.</p>
   </footer>
   <script>
     let currentSlide = 0;
     const slides = document.querySelectorAll('.slide');
     const dots = document.querySelectorAll('.dot');
-    const container = document.querySelector('.slides');
     function updateSlider() {
-      container.style.transform = `translateX(-${currentSlide * 100}%)`;
+      slides.forEach((s,i) => s.classList.toggle('active', i === currentSlide));
       dots.forEach((d,i) => d.classList.toggle('active', i === currentSlide));
-      slides.forEach((s,i) => s.style.opacity = i === currentSlide ? '1' : '0');
-      slides[currentSlide].style.animation = 'fadeIn 0.6s forwards';
+      document.querySelector('.slides').style.transform = `translateX(-${currentSlide*100}%)`;
     }
-    function nextSlide() { currentSlide = (currentSlide + 1) % slides.length; updateSlider(); }
-    function prevSlide() { currentSlide = (currentSlide - 1 + slides.length) % slides.length; updateSlider(); }
+    function nextSlide() { currentSlide = (currentSlide+1)%slides.length; updateSlider(); }
+    function prevSlide() { currentSlide = (currentSlide-1+slides.length)%slides.length; updateSlider(); }
     function goToSlide(i) { currentSlide = i; updateSlider(); }
-    window.addEventListener('load', updateSlider);
+    document.addEventListener('DOMContentLoaded', updateSlider);
   </script>
 </body>
 </html>
